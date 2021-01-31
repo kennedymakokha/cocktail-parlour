@@ -140,7 +140,7 @@ class custom extends Component {
     }
     render() {
         const { show, data, fields, measure } = this.state
-
+        console.log(data)
         return (
             <Layout>
                 <ToastContainer />
@@ -152,7 +152,7 @@ class custom extends Component {
 
                     <Button style={{ float: 'right', marginBottom: '10px' }} variant="primary" onClick={() => this.handleShow()}>
                         Create </Button>
-                    {data.length !== 0 ? <Table responsive>
+                    <Table responsive>
                         <thead>
                             <tr>
 
@@ -165,7 +165,7 @@ class custom extends Component {
                             </tr>
                         </thead>
                         <tbody>
-                            {data.map((dat, i) => (<tr key={i}>
+                            {data !== undefined ? data.map((dat, i) => (<tr key={i}>
 
                                 <td>{dat.name}</td>
                                 <td>{dat.category}</td>
@@ -184,10 +184,10 @@ class custom extends Component {
                                 ))}</td>
                                 <td>{dat.instruction}</td>
 
-                            </tr>))}
+                            </tr>)):null}
 
                         </tbody>
-                    </Table> : null}
+                    </Table>
                 </div>
                 <Modal show={show} onHide={() => this.handleClose()}>
                     <Modal.Header closeButton>
