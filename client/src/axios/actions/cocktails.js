@@ -73,7 +73,7 @@ export const fetchrandomcocktaile = () => async dispatch => {
     try {
         const response = await axios.get(`https://www.thecocktaildb.com/api/json/v1/1/random.php`);
         let payload = response.data.drinks[0]
-        console.log(payload)
+        // console.log(payload)
 
         await dispatch({ type: 'FETCH_COCKTAIL', payload })
         return payload;

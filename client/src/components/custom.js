@@ -3,7 +3,7 @@ import Layout from './layout';
 import { withRouter } from 'react-router-dom';
 import { post, fetchcustom, search } from './../axios/actions/cocktails'
 import { connect } from 'react-redux'
-import { Modal, Button, Form, Table, InputGroup, FormControl } from 'react-bootstrap'
+import { Modal, Button, Form, Table, InputGroup, FormControl, Spinner } from 'react-bootstrap'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 class custom extends Component {
@@ -34,7 +34,7 @@ class custom extends Component {
     handleChange = (i, event) => {
         const values = [...this.state.fields];
         values[i].value = event.target.value;
-        console.log(values)
+        // console.log(values)
         this.setState({
             fields: values
         })
@@ -101,7 +101,7 @@ class custom extends Component {
             }
             var j;
             for (j = 0; j < fields.length; j++) {
-                console.log(fields[j].value)
+                // console.log(fields[j].value)
                 ingredients.push(fields[j].value)
             }
             const data = {
@@ -116,6 +116,7 @@ class custom extends Component {
             })
             await this.props.post(data)
             await this.props.fetchcustom()
+            this.notify(`Cocktail added succesfully`)
             this.setState({
                 data: this.props.cocktails
             })
@@ -140,7 +141,15 @@ class custom extends Component {
     }
     render() {
         const { show, data, fields, measure } = this.state
-        console.log(data)
+        if (this.props.loading) {
+            return (
+                <div className='loadingContainer'>
+                    <Spinner animation="border" role="status">
+                        <span className="sr-only">Loading...</span>
+                    </Spinner>
+                </div>
+            )
+        }
         return (
             <Layout>
                 <ToastContainer />
@@ -184,7 +193,7 @@ class custom extends Component {
                                 ))}</td>
                                 <td>{dat.instruction}</td>
 
-                            </tr>)):null}
+                            </tr>)) : null}
 
                         </tbody>
                     </Table>

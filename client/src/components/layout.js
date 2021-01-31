@@ -6,9 +6,11 @@ export default class layout extends Component {
         return (
             <div className="container">
                 <Navbar bg="primary" variant="dark">
-                    <Navbar.Brand href="/">Home</Navbar.Brand>
+                    <Navbar.Brand href="/">
+                        <img src="./download.png" alt="" style={{ height: '60px', width: '60px', objectFit: 'cover', marginLeft: '40px' }} />
+                    </Navbar.Brand>
                     <Nav className="mr-auto">
-                        <Nav.Link href="/">Home</Nav.Link>
+                        <Nav.Link  href="/">Home</Nav.Link>
                         <Nav.Link href="/custom-cocktails">Custom Cocktails</Nav.Link>
                         {/* <Nav.Link href="#pricing">Pricing</Nav.Link> */}
                     </Nav>
