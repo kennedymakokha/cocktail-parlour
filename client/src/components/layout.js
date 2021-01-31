@@ -6,7 +6,7 @@ export default class layout extends Component {
         return (
             <div className="container">
                 <Navbar bg="primary" variant="dark">
-                    <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+                    <Navbar.Brand href="/">Home</Navbar.Brand>
                     <Nav className="mr-auto">
                         <Nav.Link href="/">Home</Nav.Link>
                         <Nav.Link href="/custom-cocktails">Custom Cocktails</Nav.Link>
